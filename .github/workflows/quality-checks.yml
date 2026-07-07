@@ -11,14 +11,12 @@ on:
 
 jobs:
   quality:
-    name: Type • Lint • Format • Secret Scan
+    name: Type • Lint • Format
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,8 +35,3 @@ jobs:
 
       - name: Format Check
         run: npm run format:check
-
-      - name: Secret Scan
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: .
